@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scan wa3y | Deci Camp 2025</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* CSS Variables */
+      :root {
+        --primary: #f6b7b7;
+        --primary-light: #feeaea;
+        --secondary: #38a169;
+        --danger: #e53e3e;
+        --warning: #dd6b20;
+        --light: #fff7f7;
+        --dark: #a16262;
+        --gray: #c5adad;
+        --gray-light: #ffe9e9;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      /* Reset & Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      /* Header Styles */
+      header {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 0 0 20px 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .header-image {
+        width: 100%;
+        height: 100%;
+      }
+
+      .header-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .header-buttons {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .header-btn {
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .header-btn:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .header-btn i {
+        font-size: 18px;
+      }
+
+      .header-btn.active {
+        background: var(--danger);
+      }
+
+      .header-btn.active:hover {
+        background: #c53030;
+      }
+
+      .spacer {
+        flex-grow: 1;
+      }
+
+      /* Main Content Styles */
+      main {
+        padding: 20px;
+        padding-bottom: 80px;
+      }
+
+      .section-title {
+        font-size: 22px;
+        margin: 20px 0;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      /* Scan Section */
+      .scan-section {
+        text-align: center;
+        margin: 30px 0;
+      }
+
+      .scan-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(42, 67, 101, 0.3);
+      }
+
+      .scan-btn:hover {
+        background: var(--primary-light);
+        transform: translateY(-2px);
+      }
+
+      .scan-btn i {
+        font-size: 24px;
+      }
+
+      .scan-result {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: var(--shadow);
+        text-align: right;
+        display: none;
+      }
+
+      .product-rating {
+        display: flex;
+        gap: 5px;
+        margin: 10px 0;
+      }
+
+      .rating-star {
+        color: var(--warning);
+        font-size: 18px;
+      }
+
+      .product-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 15px 0;
+      }
+
+      .product-tag {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .tag-healthy {
+        background: #c6f6d5;
+        color: #22543d;
+      }
+
+      .tag-boycott {
+        background: #fed7d7;
+        color: #742a2a;
+      }
+
+      .tag-quality {
+        background: #bee3f8;
+        color: #2a4365;
+      }
+
+      /* Categories Section */
+      .categories-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding: 10px 0;
+        scrollbar-width: none;
+      }
+
+      .categories-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category-card {
+        min-width: 120px;
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .category-card img {
+        width: 100%;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 10px;
+      }
+
+      .category-card p {
+        font-weight: 600;
+      }
+
+      /* Products Grid */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-image {
+        height: 140px;
+        position: relative;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--danger);
+        color: white;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+
+      .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .product-price {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .product-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .add-to-cart {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .wishlist-btn {
+        background: none;
+        border: none;
+        color: var(--gray);
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      .wishlist-btn.active {
+        color: var(--danger);
+      }
+
+      /* Footer Navigation */
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        padding: 10px 0;
+      }
+
+      .footer-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .footer-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+        border: none;
+        color: var(--gray);
+        font-size: 12px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .footer-btn.active {
+        color: var(--primary);
+      }
+
+      .footer-btn i {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -5px;
+        right: 5px;
+        background: var(--danger);
+        color: white;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Auth Modal */
+      .auth-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 20px;
+      }
+
+      .auth-container {
+        background: white;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 400px;
+        overflow: hidden;
+      }
+
+      .auth-tabs {
+        display: flex;
+        border-bottom: 1px solid var(--gray-light);
+      }
+
+      .auth-tab {
+        flex: 1;
+        padding: 15px;
+        text-align: center;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .auth-tab.active {
+        color: var(--primary);
+        border-bottom: 3px solid var(--primary);
+      }
+
+      .auth-content {
+        padding: 20px;
+      }
+
+      .auth-form {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .auth-form.active {
+        display: flex;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .input-group label {
+        font-size: 14px;
+        color: var(--gray);
+      }
+
+      .input-group input {
+        padding: 10px;
+        border: 1px solid var(--gray-light);
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-light);
+      }
+
+      /* Profile Section */
+      .profile-container {
+        padding: 20px;
+      }
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .profile-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--gray-light);
+      }
+
+      .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-info h2 {
+        font-size: 20px;
+      }
+
+      .profile-info p {
+        color: var(--gray);
+      }
+
+      .profile-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .profile-action {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px;
+        background: none;
+        border: none;
+        text-align: right;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .profile-action:hover {
+        background: var(--gray-light);
+      }
+
+      .profile-action i {
+        font-size: 20px;
+        color: var(--primary);
+      }
+
+      /* Wishlist Section */
+      .wishlist-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+      }
+
+      /* Map Modal */
+      .map-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .map-container {
+        background: white;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+      }
+
+      .map-placeholder {
+        width: 100%;
+        height: 300px;
+        background: var(--gray-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        border-radius: 8px;
+      }
+
+      .delivery-options {
+        margin-top: 15px;
+      }
+
+      .delivery-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Search Section */
+      .search-container {
+        padding: 15px;
+      }
+
+      .search-bar {
+        display: flex;
+        background: white;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-bottom: 20px;
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        font-size: 16px;
+      }
+
+      .search-bar button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0 20px;
+        cursor: pointer;
+      }
+
+      .search-results {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+      }
+
+      /* Utility Classes */
+      .hidden {
+        display: none !important;
+      }
+
+      .rotate-180 {
+        transform: rotate(180deg);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 480px) {
+        .products-grid,
+        .search-results,
+        .wishlist-items {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="header-image">
+        <img
+          src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+          alt="Header"
+        />
+      </div>
+      <div class="header-buttons">
+        <button class="header-btn" id="location-btn">
+          <i class="fas fa-map-marker-alt"></i>
+        </button>
+        <button class="header-btn" id="scan-btn-header">
+          <i class="fas fa-play rotate-180" style="color: white"></i>
+        </button>
+        <div class="spacer"></div>
+        <button class="header-btn" id="wishlist-header-btn">
+          <i class="far fa-heart"></i>
+        </button>
+        <button class="header-btn" id="notifications-btn">
+          <i class="far fa-bell"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Scan Section -->
+      <section id="scan-section">
+        <div class="scan-section">
+          <button class="scan-btn" id="scan-btn">
+            <i class="fas fa-camera"></i>
+            مسح المنتج
+          </button>
+          <div class="scan-result" id="scan-result">
+            <h3 id="scanned-product-name">زيت زيتون عضوي</h3>
+            <div class="product-rating">
+              <i class="fas fa-star rating-star"></i>
+              <i class="fas fa-star rating-star"></i>
+              <i class="fas fa-star rating-star"></i>
+              <i class="fas fa-star rating-star"></i>
+              <i class="far fa-star rating-star"></i>
+              <span>(4.2)</span>
+            </div>
+            <div class="product-tags">
+              <span class="product-tag tag-healthy">صحي</span>
+              <span class="product-tag tag-quality">جودة عالية</span>
+              <span class="product-tag tag-boycott">غير مقاطعة</span>
+            </div>
+            <p id="scanned-product-desc">
+              زيت زيتون بكر ممتاز من مزارع فلسطينية، معصور على البارد، خالي من
+              المواد الكيميائية والمواد الحافظة. مناسب للطهي والسلطات.
+            </p>
+            <div
+              class="product-actions"
+              style="justify-content: center; margin-top: 15px"
+            >
+              <button class="btn-primary" style="padding: 8px 20px">
+                عرض البدائل
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section id="categories-section">
+        <h2 class="section-title">الفئات</h2>
+        <div class="categories-container">
+          <div class="category-card">
+            <img
+              src="Images/Ecommerce checkout laptop-cuate.svg"
+              alt="Local Brands"
+            />
+            <p>علامات تجارية محلية</p>
+          </div>
+          <div class="category-card">
+            <img src="Images/Skincare-bro.svg" alt="Natural Products" />
+            <p>منتجات طبيعية</p>
+          </div>
+          <div class="category-card">
+            <img src="Images/palestine.png" alt="Palestine Endorsed" />
+            <p>معتمدة فلسطينيا</p>
+          </div>
+          <div class="category-card">
+            <img src="Images/Frozen food-amico.svg" alt="Food Products" />
+            <p>منتجات غذائية</p>
+          </div>
+          <div class="category-card">
+            <img src="Images/Interior design-amico.svg" alt="Decorations" />
+            <p>ديكورات</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section id="products-section">
+        <h2 class="section-title">منتجات مميزة</h2>
+        <div class="products-grid" id="products-grid">
+          <!-- Products will be loaded here -->
+        </div>
+      </section>
+
+      <!-- Search Section -->
+      <section id="search-section" class="hidden">
+        <div class="search-container">
+          <div class="search-bar">
+            <input type="text" placeholder="ابحث عن منتجات..." />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <div class="search-results" id="search-results">
+            <!-- Search results will appear here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Wishlist Section -->
+      <section id="wishlist-section" class="hidden">
+        <h2 class="section-title">قائمة المفضلة</h2>
+        <div class="wishlist-items" id="wishlist-items">
+          <!-- Wishlist items will appear here -->
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile-section" class="hidden">
+        <div class="profile-container">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <img
+                id="user-avatar"
+                src="https://img.icons8.com/color/96/user-male-circle--v1.png"
+                alt="User"
+              />
+            </div>
+            <div class="profile-info">
+              <h2 id="user-name">زائر</h2>
+              <p id="user-email">guest@example.com</p>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <button class="profile-action" id="edit-profile-btn">
+              <i class="fas fa-user-edit"></i>
+              <span>تعديل الملف الشخصي</span>
+            </button>
+            <button class="profile-action" id="orders-btn">
+              <i class="fas fa-history"></i>
+              <span>طلباتي</span>
+            </button>
+            <button class="profile-action" id="wishlist-btn-profile">
+              <i class="far fa-heart"></i>
+              <span>المفضلة</span>
+            </button>
+            <button class="profile-action" id="settings-btn">
+              <i class="fas fa-cog"></i>
+              <span>الإعدادات</span>
+            </button>
+            <button class="profile-action" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>تسجيل الخروج</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Navigation -->
+    <footer>
+      <div class="footer-nav">
+        <button class="footer-btn active" data-section="categories-section">
+          <i class="fas fa-home"></i>
+          <span>الرئيسية</span>
+        </button>
+        <button class="footer-btn" data-section="search-section">
+          <i class="fas fa-search"></i>
+          <span>بحث</span>
+        </button>
+        <button class="footer-btn" data-section="cart-section">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+          <span>السلة</span>
+        </button>
+        <button
+          class="footer-btn"
+          data-section="profile-section"
+          id="profile-footer-btn"
+        >
+          <i class="fas fa-user"></i>
+          <span>حسابي</span>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal hidden" id="auth-modal">
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <div class="auth-tab active" data-tab="login">تسجيل الدخول</div>
+          <div class="auth-tab" data-tab="signup">إنشاء حساب</div>
+        </div>
+
+        <div class="auth-content">
+          <form class="auth-form active" id="login-form">
+            <div class="input-group">
+              <label for="login-email">البريد الإلكتروني</label>
+              <input type="email" id="login-email" required />
+            </div>
+            <div class="input-group">
+              <label for="login-password">كلمة المرور</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <button type="submit" class="btn-primary">تسجيل الدخول</button>
+          </form>
+
+          <form class="auth-form" id="signup-form">
+            <div class="input-group">
+              <label for="signup-name">الاسم الكامل</label>
+              <input type="text" id="signup-name" required />
+            </div>
+            <div class="input-group">
+              <label for="signup-email">البريد الإلكتروني</label>
+              <input type="email" id="signup-email" required />
+            </div>
+            <div class="input-group">
+              <label for="signup-password">كلمة المرور</label>
+              <input type="password" id="signup-password" required />
+            </div>
+            <div class="input-group">
+              <label for="signup-avatar">صورة الملف الشخصي</label>
+              <input type="file" id="signup-avatar" accept="image/*" />
+            </div>
+            <button type="submit" class="btn-primary">إنشاء حساب</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Modal -->
+    <div class="map-modal hidden" id="map-modal">
+      <div class="map-container">
+        <h2>موقع المتجر</h2>
+        <div class="map-placeholder">
+          <i
+            class="fas fa-map-marker-alt"
+            style="font-size: 50px; color: var(--primary)"
+          ></i>
+        </div>
+        <div class="delivery-options">
+          <h3>خيارات التوصيل:</h3>
+          <div class="delivery-option">
+            <i class="fas fa-motorcycle" style="color: var(--secondary)"></i>
+            <span>توصيل سريع - 15 ج.م</span>
+          </div>
+          <div class="delivery-option">
+            <i class="fas fa-store" style="color: var(--primary)"></i>
+            <span>استلام من المتجر - مجانًا</span>
+          </div>
+        </div>
+        <button
+          class="btn-primary"
+          id="close-map"
+          style="margin-top: 15px; width: 100%"
+        >
+          إغلاق
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Sample Product Data
+      const products = [
+        {
+          id: 1,
+          name: "زيت زيتون عضوي",
+          price: 120,
+          category: "natural-products",
+          image:
+            "https://images.unsplash.com/photo-1584389344735-f73aa9678f6a?q=80&w=846&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          badge: "الأكثر مبيعًا",
+          rating: 4.2,
+          healthy: true,
+          boycott: false,
+          quality: "high",
+          description:
+            "زيت زيتون بكر ممتاز من مزارع فلسطينية، معصور على البارد، خالي من المواد الكيميائية والمواد الحافظة. مناسب للطهي والسلطات.",
+        },
+        {
+          id: 2,
+          name: "كوفية فلسطينية",
+          price: 250,
+          category: "clothing",
+          image:
+            "https://i.etsystatic.com/23158870/r/il/bb4e8d/6047901971/il_570xN.6047901971_lvdo.jpg",
+          badge: "فلسطين",
+          rating: 4.8,
+          healthy: true,
+          boycott: false,
+          quality: "high",
+          description:
+            "كوفية فلسطينية تقليدية مصنوعة من القطن بنسبة 100%، صناعة يدوية بجودة عالية.",
+        },
+        {
+          id: 3,
+          name: "عسل نحل طبيعي",
+          price: 80,
+          category: "food-products",
+          image:
+            "https://images.unsplash.com/photo-1559856668-d3e666959b28?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          rating: 4.5,
+          healthy: true,
+          boycott: true,
+          quality: "medium",
+          description:
+            "عسل نحل طبيعي من المناحل المحلية، غني بالعناصر الغذائية، مناسب لتحلية المشروبات.",
+        },
+        {
+          id: 4,
+          name: "بين باج",
+          price: 310,
+          category: "natural-products",
+          image:
+            "https://media.homecentre.com/i/homecentre/164653468-164653468-HC20220727_01-2100.jpg?%24prodimg-m-sqr-pdp-2x%24=&%24quality-standard%24=&fmt=auto&sm=c",
+          badge: "جديد",
+          rating: 3.9,
+          healthy: true,
+          boycott: false,
+          quality: "high",
+          description:
+            "سيروم طبيعي للوجه مصنوع من الزيوت النباتية النقية، خالي من المواد الكيميائية الضارة.",
+        },
+        {
+          id: 5,
+          name: "شطرنج",
+          price: 90,
+          category: "accessories",
+          image:
+            "https://images.unsplash.com/photo-1741875571751-de920333d524?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          badge: "محدودة الكمية",
+
+          rating: 4.0,
+          healthy: true,
+          boycott: false,
+          quality: "high",
+          description:
+            "لوحة شطرنج خشبية بتصميم أنيق ومميز، مع قطع شفافة فريدة تضيف لمسة عصرية وفخامة. مثالية لمحبي الألعاب الذهنية، تجمع بين الجودة والجمال لتجربة لعب راقية وممتعة في كل مرة.",
+        },
+        {
+          id: 6,
+          name: "شمعة معطرة طبيعية",
+          price: 45,
+          category: "food-products",
+          image:
+            "https://plus.unsplash.com/premium_photo-1681412205205-5422a084e717?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2FuZGxlfGVufDB8fDB8fHww",
+          rating: 4.1,
+          healthy: true,
+          boycott: true,
+          quality: "medium",
+          description:
+            "شمعة معطرة طبيعية، مصنوعة من شمع الصويا النقي، تعطي رائحة هادئة تدوم طويلاً، مثالية للاسترخاء وخلق جو مريح في البيت",
+        },
+      ];
+
+      // User Data
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+      // DOM Elements
+      const productsGrid = document.getElementById("products-grid");
+      const authModal = document.getElementById("auth-modal");
+      const loginForm = document.getElementById("login-form");
+      const signupForm = document.getElementById("signup-form");
+      const authTabs = document.querySelectorAll(".auth-tab");
+      const authForms = document.querySelectorAll(".auth-form");
+      const profileSection = document.getElementById("profile-section");
+      const profileFooterBtn = document.getElementById("profile-footer-btn");
+      const logoutBtn = document.getElementById("logout-btn");
+      const userAvatar = document.getElementById("user-avatar");
+      const userName = document.getElementById("user-name");
+      const userEmail = document.getElementById("user-email");
+      const locationBtn = document.getElementById("location-btn");
+      const mapModal = document.getElementById("map-modal");
+      const closeMapBtn = document.getElementById("close-map");
+      const footerBtns = document.querySelectorAll(".footer-btn");
+      const sections = document.querySelectorAll("main > section");
+      const cartCount = document.querySelector(".cart-count");
+      const scanBtn = document.getElementById("scan-btn");
+      const scanResult = document.getElementById("scan-result");
+      const scanBtnHeader = document.getElementById("scan-btn-header");
+      const wishlistHeaderBtn = document.getElementById("wishlist-header-btn");
+      const wishlistItems = document.getElementById("wishlist-items");
+      const wishlistSection = document.getElementById("wishlist-section");
+      const wishlistProfileBtn = document.getElementById(
+        "wishlist-btn-profile"
+      );
+      const scannedProductName = document.getElementById(
+        "scanned-product-name"
+      );
+      const scannedProductDesc = document.getElementById(
+        "scanned-product-desc"
+      );
+
+      // Display Products
+      function displayProducts() {
+        productsGrid.innerHTML = "";
+
+        products.forEach((product) => {
+          const isWishlisted = wishlist.includes(product.id);
+
+          const productCard = document.createElement("div");
+          productCard.className = "product-card";
+          productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        ${
+                          product.badge
+                            ? `<span class="product-badge">${product.badge}</span>`
+                            : ""
+                        }
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">${product.price} ج.م</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${
+                              product.id
+                            }">أضف للسلة</button>
+                            <button class="wishlist-btn ${
+                              isWishlisted ? "active" : ""
+                            }" data-id="${product.id}">
+                                <i class="${
+                                  isWishlisted ? "fas" : "far"
+                                } fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+          productsGrid.appendChild(productCard);
+        });
+      }
+
+      // Display Wishlist Items
+      function displayWishlist() {
+        wishlistItems.innerHTML = "";
+
+        if (wishlist.length === 0) {
+          wishlistItems.innerHTML =
+            '<p style="grid-column: 1/-1; text-align: center;">لا توجد منتجات في قائمة المفضلة</p>';
+          return;
+        }
+
+        products.forEach((product) => {
+          if (wishlist.includes(product.id)) {
+            const productCard = document.createElement("div");
+            productCard.className = "product-card";
+            productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                            ${
+                              product.badge
+                                ? `<span class="product-badge">${product.badge}</span>`
+                                : ""
+                            }
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-price">${product.price} ج.م</p>
+                            <div class="product-actions">
+                                <button class="add-to-cart" data-id="${
+                                  product.id
+                                }">أضف للسلة</button>
+                                <button class="wishlist-btn active" data-id="${
+                                  product.id
+                                }">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+            wishlistItems.appendChild(productCard);
+          }
+        });
+      }
+
+      // Update Cart Count
+      function updateCartCount() {
+        const totalItems = cart.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+        cartCount.textContent = totalItems;
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Update User Profile Display
+      function updateProfileDisplay() {
+        if (currentUser) {
+          userAvatar.src =
+            currentUser.avatar ||
+            "https://img.icons8.com/color/96/user-male-circle--v1.png";
+          userName.textContent = currentUser.name;
+          userEmail.textContent = currentUser.email;
+          wishlistHeaderBtn.classList.toggle("active", wishlist.length > 0);
+        } else {
+          userAvatar.src =
+            "https://img.icons8.com/color/96/user-male-circle--v1.png";
+          userName.textContent = "زائر";
+          userEmail.textContent = "guest@example.com";
+          wishlistHeaderBtn.classList.remove("active");
+        }
+      }
+
+      // Show Notification
+      function showNotification(message, type = "success") {
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      }
+
+      // Simulate Product Scanning
+      function scanProduct() {
+        // In a real app, this would use the device camera
+        // For demo purposes, we'll randomly pick a product
+        const randomProduct =
+          products[Math.floor(Math.random() * products.length)];
+
+        scannedProductName.textContent = randomProduct.name;
+        scannedProductDesc.textContent = randomProduct.description;
+
+        // Update rating stars
+        const ratingStars = document.querySelectorAll(".rating-star");
+        const fullStars = Math.floor(randomProduct.rating);
+        const hasHalfStar = randomProduct.rating % 1 >= 0.5;
+
+        ratingStars.forEach((star, index) => {
+          if (index < fullStars) {
+            star.className = "fas fa-star rating-star";
+          } else if (index === fullStars && hasHalfStar) {
+            star.className = "fas fa-star-half-alt rating-star";
+          } else {
+            star.className = "far fa-star rating-star";
+          }
+        });
+
+        // Update tags
+        const tagsContainer = document.querySelector(".product-tags");
+        tagsContainer.innerHTML = "";
+
+        if (randomProduct.healthy) {
+          tagsContainer.innerHTML +=
+            '<span class="product-tag tag-healthy">صحي</span>';
+        }
+
+        if (randomProduct.boycott) {
+          tagsContainer.innerHTML +=
+            '<span class="product-tag tag-boycott">مقاطعة</span>';
+        } else {
+          tagsContainer.innerHTML +=
+            '<span class="product-tag tag-boycott" style="background: #c6f6d5; color: #22543d;">غير مقاطعة</span>';
+        }
+
+        if (randomProduct.quality === "high") {
+          tagsContainer.innerHTML +=
+            '<span class="product-tag tag-quality">جودة عالية</span>';
+        } else if (randomProduct.quality === "medium") {
+          tagsContainer.innerHTML +=
+            '<span class="product-tag tag-quality" style="background: #feebc8; color: #7b341e;">جودة متوسطة</span>';
+        }
+
+        scanResult.style.display = "block";
+        showNotification("تم مسح المنتج بنجاح");
+      }
+
+      // Event Listeners
+      // Scan Button
+      scanBtn.addEventListener("click", scanProduct);
+      scanBtnHeader.addEventListener("click", scanProduct);
+
+      // Wishlist Header Button
+      wishlistHeaderBtn.addEventListener("click", () => {
+        if (wishlist.length === 0) {
+          showNotification("قائمة المفضلة فارغة", "error");
+          return;
+        }
+
+        sections.forEach((section) => section.classList.add("hidden"));
+        wishlistSection.classList.remove("hidden");
+        displayWishlist();
+
+        footerBtns.forEach((btn) => btn.classList.remove("active"));
+      });
+
+      // Wishlist Profile Button
+      wishlistProfileBtn.addEventListener("click", () => {
+        sections.forEach((section) => section.classList.add("hidden"));
+        wishlistSection.classList.remove("hidden");
+        displayWishlist();
+
+        footerBtns.forEach((btn) => btn.classList.remove("active"));
+      });
+
+      // Location Button
+      locationBtn.addEventListener("click", () => {
+        mapModal.classList.remove("hidden");
+      });
+
+      closeMapBtn.addEventListener("click", () => {
+        mapModal.classList.add("hidden");
+      });
+
+      // Auth Tabs
+      authTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          authTabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          const tabName = tab.getAttribute("data-tab");
+          authForms.forEach((form) => form.classList.remove("active"));
+          document.getElementById(`${tabName}-form`).classList.add("active");
+        });
+      });
+
+      // Login Form
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
+
+        const user = users.find(
+          (u) => u.email === email && u.password === password
+        );
+
+        if (user) {
+          currentUser = user;
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          authModal.classList.add("hidden");
+          updateProfileDisplay();
+          showNotification("تم تسجيل الدخول بنجاح");
+        } else {
+          showNotification(
+            "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+            "error"
+          );
+        }
+      });
+
+      // Signup Form
+      signupForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("signup-name").value;
+        const email = document.getElementById("signup-email").value;
+        const password = document.getElementById("signup-password").value;
+        const avatarFile = document.getElementById("signup-avatar").files[0];
+
+        // Check if email already exists
+        if (users.some((u) => u.email === email)) {
+          showNotification("هذا البريد الإلكتروني مسجل بالفعل", "error");
+          return;
+        }
+
+        // Create user object
+        const newUser = {
+          id: Date.now(),
+          name,
+          email,
+          password,
+          avatar: avatarFile
+            ? URL.createObjectURL(avatarFile)
+            : "https://img.icons8.com/color/96/user-male-circle--v1.png",
+        };
+
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+        currentUser = newUser;
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+        authModal.classList.add("hidden");
+        updateProfileDisplay();
+        showNotification("تم إنشاء الحساب بنجاح");
+      });
+
+      // Logout Button
+      logoutBtn.addEventListener("click", () => {
+        currentUser = null;
+        localStorage.removeItem("currentUser");
+        updateProfileDisplay();
+        showNotification("تم تسجيل الخروج بنجاح");
+
+        // Hide profile section if active
+        if (!profileSection.classList.contains("hidden")) {
+          profileSection.classList.add("hidden");
+          document
+            .getElementById("categories-section")
+            .classList.remove("hidden");
+          footerBtns[0].classList.add("active");
+        }
+      });
+
+      // Profile Footer Button
+      profileFooterBtn.addEventListener("click", () => {
+        if (!currentUser) {
+          authModal.classList.remove("hidden");
+          return;
+        }
+
+        sections.forEach((section) => section.classList.add("hidden"));
+        profileSection.classList.remove("hidden");
+
+        footerBtns.forEach((btn) => btn.classList.remove("active"));
+        profileFooterBtn.classList.add("active");
+      });
+
+      // Footer Navigation
+      footerBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const sectionId = btn.getAttribute("data-section");
+
+          sections.forEach((section) => {
+            if (section.id === sectionId) {
+              section.classList.remove("hidden");
+            } else {
+              section.classList.add("hidden");
+            }
+          });
+
+          footerBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+
+      // Add to Cart
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("add-to-cart")) {
+          const productId = parseInt(e.target.getAttribute("data-id"));
+          const product = products.find((p) => p.id === productId);
+
+          if (product) {
+            const existingItem = cart.find((item) => item.id === productId);
+
+            if (existingItem) {
+              existingItem.quantity += 1;
+            } else {
+              cart.push({
+                ...product,
+                quantity: 1,
+              });
+            }
+
+            updateCartCount();
+            showNotification(`تم إضافة ${product.name} إلى السلة`);
+          }
+        }
+
+        // Wishlist Toggle
+        if (
+          e.target.classList.contains("wishlist-btn") ||
+          e.target.closest(".wishlist-btn")
+        ) {
+          if (!currentUser) {
+            showNotification("يجب تسجيل الدخول أولاً", "error");
+            authModal.classList.remove("hidden");
+            return;
+          }
+
+          const btn = e.target.classList.contains("wishlist-btn")
+            ? e.target
+            : e.target.closest(".wishlist-btn");
+          const productId = parseInt(btn.getAttribute("data-id"));
+
+          const index = wishlist.indexOf(productId);
+          if (index === -1) {
+            wishlist.push(productId);
+            btn.classList.add("active");
+            btn.innerHTML = '<i class="fas fa-heart"></i>';
+            showNotification("تمت الإضافة إلى المفضلة");
+          } else {
+            wishlist.splice(index, 1);
+            btn.classList.remove("active");
+            btn.innerHTML = '<i class="far fa-heart"></i>';
+            showNotification("تمت الإزالة من المفضلة");
+          }
+
+          localStorage.setItem("wishlist", JSON.stringify(wishlist));
+          updateProfileDisplay();
+
+          // If we're on the wishlist page, refresh it
+          if (!wishlistSection.classList.contains("hidden")) {
+            displayWishlist();
+          }
+        }
+      });
+
+      // Initialize
+      displayProducts();
+      updateCartCount();
+      updateProfileDisplay();
+
+      // Close auth modal when clicking outside
+      authModal.addEventListener("click", (e) => {
+        if (e.target === authModal) {
+          authModal.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
